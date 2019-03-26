@@ -1,5 +1,18 @@
 <?php
-foreach ($_SESSION["produtos"] as $item	): ?>
+if(isset($_GET['action'])){
+	$action = $_GET['action'];
+	$productsArray = array();
+	foreach ($_SESSION['produtos'] as $key) {
+		if($key['marca'] == $action){
+			array_push($productsArray, $key);
+		}
+	# code...
+	}
+}
+else{
+	$productsArray = $_SESSION['produtos'];
+}
+foreach ($productsArray as $item	): ?>
 <div class="col-md-4 col-sm-6 col-xs-6">
 	<div class="product product-single">
 		<div class="product-thumb">

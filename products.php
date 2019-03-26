@@ -1,6 +1,8 @@
 <?php
 include("logica/api.php");
-
+$_SESSION['params'] = "todos";
+if(isset($_GET['action'])){
+$_SESSION['params'] = $_GET['action'];}
 
 ?>
 
@@ -637,10 +639,7 @@ include("logica/api.php");
 					<div class="aside">
 						<h3 class="aside-title">Filter by Brand</h3>
 						<ul class="list-links">
-							<li><a href="#">Nike</a></li>
-							<li><a href="#">Adidas</a></li>
-							<li><a href="#">Polo</a></li>
-							<li><a href="#">Lacost</a></li>
+							<?php include("include/filter-by-brand.php") ?>
 						</ul>
 					</div>
 					<!-- /aside widget -->

@@ -9,4 +9,5 @@ $retornoEmJson = file_get_contents('http://ramos.atwebpages.com/api/produtos.php
 $retornoEmJson = json_decode($retornoEmJson, true);
 
 $_SESSION['produtos'] = $retornoEmJson;
+$_SESSION['params'] = "todos";
 ?>
