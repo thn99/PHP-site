@@ -1,5 +1,7 @@
 <?php
 
+// conteúdo da aera filter by brand
+
 $brandArray = array("marca");
 $arrayLength = 0;
 
@@ -12,7 +14,7 @@ foreach ($_SESSION["produtos"] as $item	){
 		}
 	}
 	if($validate == 0){
-		echo "<li><a href='?action=".$item["marca"]."'>".$item["marca"]."</a></li>";
+		echo "<li><a href='?action=marca&name=".$item["marca"]."'>".$item["marca"]."</a></li>";
 		array_push($brandArray, $item["marca"]);
 		$arrayLength += 1;
 	}

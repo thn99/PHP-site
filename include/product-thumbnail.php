@@ -1,14 +1,41 @@
 <?php
+
+ // conteúdo da pagina products.php
+
+ // caso tenha filtro
 if(isset($_GET['action'])){
 	$action = $_GET['action'];
 	$productsArray = array();
-	foreach ($_SESSION['produtos'] as $key) {
-		if($key['marca'] == $action){
-			array_push($productsArray, $key);
-		}
-	# code...
-	}
+	switch($action){
+		case 'marca':
+			$name = $_GET['name'];	
+			foreach ($_SESSION['produtos'] as $key) {
+				if($key['marca'] == $name){
+					array_push($productsArray, $key);
+				}
+			}
+			break;
+		case 'sortBy':
+			$priceArray = array();
+			foreach ($_SESSION['produtos'] as $key){
+				array_push($priceArray, $key['preco']);
+			}
+			sort($priceArray);
+			for ($i = 0; $i < sizeof($priceArray); $i++){
+				foreach($_SESSION['produtos'] as $key){
+					if($key['preco'] == $priceArray[$i]){
+						array_push($productsArray, $key);
+					}
+				}
+			}
+			break;
+		default:
+			break;
+			
 }
+}
+
+// caso não tenha filtro
 else{
 	$productsArray = $_SESSION['produtos'];
 }

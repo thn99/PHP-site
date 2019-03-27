@@ -710,12 +710,11 @@ $_SESSION['params'] = $_GET['action'];}
 							</div>
 							<div class="sort-filter">
 								<span class="text-uppercase">Sort By:</span>
-								<select class="input">
-										<option value="0">Position</option>
-										<option value="0">Price</option>
-										<option value="0">Rating</option>
+								<select id='sortBySelect' class="input">
+										<option value="">Position</option>
+										<option value="?action=sortBy">Price</option>
 									</select>
-								<a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
+								<a href="?action=sortBy" id='sortBy' class="main-btn icon-btn" onClick="something();"><i class="fa fa-arrow-down"></i></a>
 							</div>
 						</div>
 						<div class="pull-right">
@@ -900,7 +899,7 @@ $_SESSION['params'] = $_GET['action'];}
 	<script src="js/nouislider.min.js"></script>
 	<script src="js/jquery.zoom.min.js"></script>
 	<script src="js/main.js"></script>
-
+	<script src="js/something.js"></script>
 </body>
 
 </html>
