@@ -711,7 +711,7 @@ $_SESSION['params'] = $_GET['action'];}
 							<div class="sort-filter">
 								<span class="text-uppercase">Sort By:</span>
 								<select id='sortBySelect' class="input">
-										<option value="">Position</option>
+										<option value="products.php" >Position</option>
 										<option value="?action=sortBy">Price</option>
 									</select>
 								<a href="?action=sortBy" id='sortBy' class="main-btn icon-btn" onClick="something();"><i class="fa fa-arrow-down"></i></a>
