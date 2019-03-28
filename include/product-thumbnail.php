@@ -59,7 +59,7 @@ foreach ($productsArray as $item	): ?>
 				<i class="fa fa-star"></i>
 				<i class="fa fa-star-o empty"></i>
 			</div>
-			<h2 class="product-name"><a href="#"><?=$item["nome"]?></a></h2>
+			<h2 class="product-name"><?="<a href='product-page.php?product_id=".$item["id"]."'>".$item["nome"]."</a>"?></h2>
 			<div class="product-btns">
 				<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 				<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
