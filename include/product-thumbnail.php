@@ -40,7 +40,7 @@ else{
 	$productsArray = $_SESSION['produtos'];
 }
 foreach ($productsArray as $item	): ?>
-<div class="col-md-4 col-sm-6 col-xs-6">
+<div class="col-md-6 col-sm-6 col-xs-8">
 	<div class="product product-single">
 		<div class="product-thumb">
 			<div class="product-label">
