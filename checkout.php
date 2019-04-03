@@ -1,3 +1,30 @@
+<?php 
+session_start();
+$newProduct = array();
+$cont = 0;
+if(isset($_GET['product_id'])){
+	if(!isset($_SESSION["carrinho"]))
+		$_SESSION["carrinho"] = array();
+
+	if(true){
+		$product_id = $_GET['product_id'];
+		$type = $_GET['type'];
+		$newProduct = [$product_id, $type];
+		foreach ($_SESSION["carrinho"] as $item){
+			if($item == $newProduct){
+				$cont = 1;
+				header("location: product-page.php?product_id=".$item[0]."&type=".$item[1]);
+
+			}
+		}
+		if($cont == 0 ){
+			array_push($_SESSION["carrinho"], $newProduct);
+
+		}
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,45 +150,7 @@
 
 						<!-- Cart -->
 						<li class="header-cart dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-									<span class="qty">3</span>
-								</div>
-								<strong class="text-uppercase">My Cart:</strong>
-								<br>
-								<span>35.20$</span>
-							</a>
-							<div class="custom-menu">
-								<div id="shopping-cart">
-									<div class="shopping-cart-list">
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-									</div>
-									<div class="shopping-cart-btns">
-										<button class="main-btn">View Cart</button>
-										<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-									</div>
-								</div>
-							</div>
+							<?php include('./include/page-cart.php'); ?>
 						</li>
 						<!-- /Cart -->
 
@@ -675,67 +664,10 @@
 										<th class="text-right"></th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-										<td class="details">
-											<a href="#">Product Name Goes Here</a>
-											<ul>
-												<li><span>Size: XL</span></li>
-												<li><span>Color: Camelot</span></li>
-											</ul>
-										</td>
-										<td class="price text-center"><strong>$32.50</strong><br><del class="font-weak"><small>$40.00</small></del></td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-										<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-									</tr>
-									<tr>
-										<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-										<td class="details">
-											<a href="#">Product Name Goes Here</a>
-											<ul>
-												<li><span>Size: XL</span></li>
-												<li><span>Color: Camelot</span></li>
-											</ul>
-										</td>
-										<td class="price text-center"><strong>$32.50</strong></td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-										<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-									</tr>
-									<tr>
-										<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-										<td class="details">
-											<a href="#">Product Name Goes Here</a>
-											<ul>
-												<li><span>Size: XL</span></li>
-												<li><span>Color: Camelot</span></li>
-											</ul>
-										</td>
-										<td class="price text-center"><strong>$32.50</strong></td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-										<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<th class="empty" colspan="3"></th>
-										<th>SUBTOTAL</th>
-										<th colspan="2" class="sub-total">$97.50</th>
-									</tr>
-									<tr>
-										<th class="empty" colspan="3"></th>
-										<th>SHIPING</th>
-										<td colspan="2">Free Shipping</td>
-									</tr>
-									<tr>
-										<th class="empty" colspan="3"></th>
-										<th>TOTAL</th>
-										<th colspan="2" class="total">$97.50</th>
-									</tr>
-								</tfoot>
+								
+									<?php include('./include/product-review.php');?>
+								
+								
 							</table>
 							<div class="pull-right">
 								<button class="primary-btn">Place Order</button>
